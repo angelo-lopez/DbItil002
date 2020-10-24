@@ -60,7 +60,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Query String: Select * From employees Limit 5");
 			System.out.println("Comments: Retrieves the first five employee records.");
 			System.out.println("Result:\n");
-			getRecords("Select * From employees Limit 5");
+			getResultSet("Select * From employees Limit 5");
 			System.out.println("Successfull.");
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql, String dataType, String argument) {}");
@@ -68,15 +68,15 @@ public class DbUtilFunctionalTest {
 					"left join offices on employees.officeCode = offices.officeCode where employeeNumber > 1500");
 			System.out.println("Comments: Retrieves the name and city of employees where the employee number is greater than 1500.");
 			System.out.println("Result:\n");
-			getRecords("select employeeNumber, concat(firstName, \" \", lastName) as \"Name\", city from employees left join offices on employees.officeCode = offices.officeCode " + 
-			"where employeeNumber > ?", "String", "1500");
+			displayResultSet(getResultSet("select employeeNumber, concat(firstName, \" \", lastName) as \"Name\", city from employees left join offices on employees.officeCode = offices.officeCode " + 
+			"where employeeNumber > ?", "String", "1500"));
 			System.out.println("Successfull.");
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
 			System.out.println("Query String: Select Count(employeeNumber) From employees");
 			System.out.println("Comments: Retrieves the total number of records in the employees table.");
 			System.out.println("Result:\n");
-			getRecords("Select Count(employeeNumber) From employees");
+			displayResultSet(getResultSet("Select Count(employeeNumber) From employees"));
 			System.out.println("Successfull.");
 			System.out.println("--------------------------------------------------------------------------------------------");
 			sql = "Insert Into employees (employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle) " +
@@ -95,7 +95,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Query String: Select Count(employeeNumber) From employees");
 			System.out.println("Comments: Retrieves the total number of records in the employees table.");
 			System.out.println("Result:\n");
-			getRecords("Select Count(employeeNumber) From employees");
+			displayResultSet(getResultSet("Select Count(employeeNumber) From employees"));
 			System.out.println("Successfull.");
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public void close() {}");
@@ -117,31 +117,15 @@ public class DbUtilFunctionalTest {
 		}
 	}
 	
-	public void getRecords(String sql) throws SQLException, Exception {
-		ResultSet resultSet = dbUtil.getData(sql);
-		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
-		
-		if(resultSet != null & resultSet.isBeforeFirst()) {
-			for(int i = 1; i <= resultSetMetaData.getColumnCount(); i ++) {
-				System.out.printf("%-35s", resultSetMetaData.getColumnLabel(i));
-			}
-			
-			System.out.print("\n");
-			
-			while(resultSet.next()) {
-				for(int i = 1; i <= resultSetMetaData.getColumnCount(); i ++) {
-					System.out.printf("%-35s", resultSet.getString(i));
-				}
-				System.out.print("\n");
-			}
-		}
-		else {
-			System.out.println("0 number of records retrieved.");
-		}
+	public ResultSet getResultSet(String sql) throws SQLException, Exception {
+		return dbUtil.getData(sql);
 	}
 	
-	public void getRecords(String sql, String dataType, String argument) throws SQLException, Exception {
-		ResultSet resultSet = dbUtil.getData(sql, dataType, argument);
+	public ResultSet getResultSet(String sql, String dataType, String argument) throws SQLException, Exception {
+		return dbUtil.getData(sql, dataType, argument);
+	}
+	
+	public void displayResultSet(ResultSet resultSet) throws SQLException, Exception {
 		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 		
 		if(resultSet != null & resultSet.isBeforeFirst()) {
