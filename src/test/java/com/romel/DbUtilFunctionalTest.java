@@ -68,7 +68,7 @@ public class DbUtilFunctionalTest {
 					"left join offices on employees.officeCode = offices.officeCode where employeeNumber > 1500");
 			System.out.println("Comments: Retrieves the name and city of employees where the employee number is greater than 1500.");
 			System.out.println("Result:\n");
-			displayRecords("select employeeNumber, concat(firstName, \" \", lastName) as \"Name\", city from employees left join offices on employees.officeCode = offices.officeCode " + 
+			getRecords("select employeeNumber, concat(firstName, \" \", lastName) as \"Name\", city from employees left join offices on employees.officeCode = offices.officeCode " + 
 			"where employeeNumber > ?", "String", "1500");
 			System.out.println("Successfull.");
 			System.out.println("--------------------------------------------------------------------------------------------");
@@ -87,6 +87,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Query String: " + sql);
 			System.out.println("Comments: Inserts a record in the employees table for employee number 1803.");
 			System.out.println("Result:\n");
+			//updateData(sql, columnType, columnValue);
 			System.out.println("Inserted -> " + updateData(sql, columnType, columnValue) + " record/s.");
 			System.out.println("Successfull.");
 			System.out.println("--------------------------------------------------------------------------------------------");
@@ -139,11 +140,7 @@ public class DbUtilFunctionalTest {
 		}
 	}
 	
-	//public ResultSet getResultSet(String sql, String dataType, String argument) throws SQLException, Exception {
-		
-	//}
-	
-	public void displayRecords(String sql, String dataType, String argument) throws SQLException, Exception {
+	public void getRecords(String sql, String dataType, String argument) throws SQLException, Exception {
 		ResultSet resultSet = dbUtil.getData(sql, dataType, argument);
 		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 		
