@@ -1,4 +1,4 @@
-package com.romel;
+package com.romel;//default package.
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -48,6 +48,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Data Source -> " + properties.getProperty("mysqllocal.url") + "/" + properties.getProperty("mysqllocal.schema"));
 			System.out.println("Run Date and Time -> " + LocalDate.now().format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + 
 					" " + LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss")));
+			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public void connect() {}");
 			System.out.println("Query String: None");
@@ -55,6 +56,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Result:\n");
 			dbUtil.connect();
 			System.out.println("Successfull.");
+			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
 			System.out.println("Query String: Select * From employees Limit 5");
@@ -62,6 +64,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Result:\n");
 			getResultSet("Select * From employees Limit 5");
 			System.out.println("Successfull.");
+			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql, String dataType, String argument) {}");
 			System.out.println("Query String: select employeeNumber, concat(firstName, \" \", lastName) as \"Name\", city from employees " + "\n" +
@@ -71,6 +74,7 @@ public class DbUtilFunctionalTest {
 			displayResultSet(getResultSet("select employeeNumber, concat(firstName, \" \", lastName) as \"Name\", city from employees left join offices on employees.officeCode = offices.officeCode " + 
 			"where employeeNumber > ?", "String", "1500"));
 			System.out.println("Successfull.");
+			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
 			System.out.println("Query String: Select Count(employeeNumber) From employees");
@@ -78,6 +82,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Result:\n");
 			displayResultSet(getResultSet("Select Count(employeeNumber) From employees"));
 			System.out.println("Successfull.");
+			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			sql = "Insert Into employees (employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle) " +
 					"values (?, ?, ?, ?, ?, ?, ?, ?)";
@@ -90,6 +95,7 @@ public class DbUtilFunctionalTest {
 			//updateData(sql, columnType, columnValue);
 			System.out.println("Inserted -> " + updateData(sql, columnType, columnValue) + " record/s.");
 			System.out.println("Successfull.");
+			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
 			System.out.println("Query String: Select Count(employeeNumber) From employees");
@@ -97,6 +103,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Result:\n");
 			displayResultSet(getResultSet("Select Count(employeeNumber) From employees"));
 			System.out.println("Successfull.");
+			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public void close() {}");
 			System.out.println("Query String: None");
@@ -104,6 +111,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Result:\n");
 			dbUtil.close();
 			System.out.println("Successfull.");
+			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("End of test.");
 		}
