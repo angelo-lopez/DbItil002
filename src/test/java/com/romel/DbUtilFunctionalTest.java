@@ -1,4 +1,4 @@
-package com.romel;//default package.
+package com.romel;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
