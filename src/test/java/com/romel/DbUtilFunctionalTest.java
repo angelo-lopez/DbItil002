@@ -37,7 +37,6 @@ public class DbUtilFunctionalTest {
 	}
 	
 	@Test
-	@Order(1)
 	public void testStart() {
 		String sql;
 		String[] columnType;
