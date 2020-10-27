@@ -19,7 +19,6 @@ import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Order;
-import org.junit.jupiter.api.Tag;
 
 public class DbUtilFunctionalTest {
 	
@@ -39,7 +38,6 @@ public class DbUtilFunctionalTest {
 	
 	@Test
 	@Order(1)
-	@Tag("Functional Test")
 	public void testStart() {
 		String sql;
 		String[] columnType;
