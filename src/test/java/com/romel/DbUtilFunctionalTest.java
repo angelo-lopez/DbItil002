@@ -39,6 +39,7 @@ public class DbUtilFunctionalTest {
 	
 	@Test
 	@Order(1)
+	@Tag("Functional Test")
 	public void testStart() {
 		String sql;
 		String[] columnType;
