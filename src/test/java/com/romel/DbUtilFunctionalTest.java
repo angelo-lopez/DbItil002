@@ -86,7 +86,7 @@ public class DbUtilFunctionalTest {
 			sql = "Insert Into employees (employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle) " +
 					"values (?, ?, ?, ?, ?, ?, ?, ?)";
 			columnType = new String[]{"int", "String", "String", "String", "String", "int", "int", "String"};
-			columnValue = new String[]{"1803", "Boi", "Mushroom", "x1234", "mboi@classicmodelcars.com", "1", "1002", "Securit Officer"};
+			columnValue = new String[]{"1803", "Boi", "Mushroom", "x1234", "mboi@classicmodelcars.com", "1", "1002", "Security Officer"};
 			System.out.println("Method under test -> public int updateData(String sql, String[] dataType, String[] argument) {}");
 			System.out.println("Query String: " + sql);
 			System.out.println("Comments: Inserts a record in the employees table for employee number 1803.");
