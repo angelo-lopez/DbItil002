@@ -47,7 +47,7 @@ public class DbUtilFunctionalTest {
 					" " + LocalTime.now().format(DateTimeFormatter.ofPattern("hh:mm:ss")));
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
-			System.out.println("Method under test -> public void connect() {}");
+			System.out.println("Method under test -> public void connect()");
 			System.out.println("Query String: None");
 			System.out.println("Commments: Connects to the MySQL local database.");
 			System.out.println("Result:\n");
@@ -55,7 +55,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
-			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
+			System.out.println("Method under test -> public ResultSet getData(String sql)");
 			System.out.println("Query String: Select * From employees Limit 5");
 			System.out.println("Comments: Retrieves the first five employee records.");
 			System.out.println("Result:\n");
@@ -63,7 +63,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
-			System.out.println("Method under test -> public ResultSet getData(String sql, String dataType, String argument) {}");
+			System.out.println("Method under test -> public ResultSet getData(String sql, String dataType, String argument)");
 			System.out.println("Query String: select employeeNumber, concat(firstName, \" \", lastName) as \"Name\", city from employees " + "\n" +
 					"left join offices on employees.officeCode = offices.officeCode where employeeNumber > 1500");
 			System.out.println("Comments: Retrieves the name and city of employees where the employee number is greater than 1500.");
@@ -73,7 +73,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
-			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
+			System.out.println("Method under test -> public ResultSet getData(String sql)");
 			System.out.println("Query String: Select Count(employeeNumber) From employees");
 			System.out.println("Comments: Retrieves the total number of records in the employees table.");
 			System.out.println("Result:\n");
@@ -85,7 +85,7 @@ public class DbUtilFunctionalTest {
 					"values (?, ?, ?, ?, ?, ?, ?, ?)";
 			columnType = new String[]{"int", "String", "String", "String", "String", "int", "int", "String"};
 			columnValue = new String[]{"1803", "Boi", "Mushroom", "x1234", "mboi@classicmodelcars.com", "1", "1002", "Security Officer"};
-			System.out.println("Method under test -> public int updateData(String sql, String[] dataType, String[] argument) {}");
+			System.out.println("Method under test -> public int updateData(String sql, String[] dataType, String[] argument)");
 			System.out.println("Query String: " + sql);
 			System.out.println("Comments: Inserts a record in the employees table for employee number 1803.");
 			System.out.println("Result:\n");
@@ -94,7 +94,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
-			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
+			System.out.println("Method under test -> public ResultSet getData(String sql)");
 			System.out.println("Query String: Select Count(employeeNumber) From employees");
 			System.out.println("Comments: Retrieves the total number of records in the employees table.");
 			System.out.println("Result:\n");
@@ -102,15 +102,15 @@ public class DbUtilFunctionalTest {
 			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
-			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
+			System.out.println("Method under test -> public ResultSet getData(String sql, String dataType, String argument");
 			System.out.println("Query String: Select * From employees Where employeeNumber = 1803");
 			System.out.println("Comments: Retrieves the newly inserted record for employee number 1803.");
 			System.out.println("Result:\n");
 			displayResultSet(getResultSet("Select * From employees Where employeeNumber = ?", "int", "1803"));
-			System.out.println("Successfull.");
+			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
-			System.out.println("Method under test -> public void close() {}");
+			System.out.println("Method under test -> public void close()");
 			System.out.println("Query String: None");
 			System.out.println("Comments: Closes the connection to the MySQL local database.");
 			System.out.println("Result:\n");
