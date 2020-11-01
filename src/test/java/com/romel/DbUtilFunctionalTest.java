@@ -107,7 +107,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Comments: Retrieves the newly inserted record for employee number 1803.");
 			System.out.println("Result:\n");
 			displayResultSet(getResultSet("Select * From employees Where employeeNumber = ?", "int", "1803"));
-			System.out.println("Successfull.");
+			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public void close() {}");
