@@ -104,6 +104,14 @@ public class DbUtilFunctionalTest {
 			System.out.println("Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
+			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
+			System.out.println("Query String: Select * From employees Where employeeNumber = 1803");
+			System.out.println("Comments: Retrieves the newly inserted record for employee number 1803.");
+			System.out.println("Result:\n");
+			displayResultSet(getResultSet("Select * From employees Where employeeNumber = ?", "int", "1803"));
+			System.out.println("Successfull.");
+			
+			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public void close() {}");
 			System.out.println("Query String: None");
 			System.out.println("Comments: Closes the connection to the MySQL local database.");
