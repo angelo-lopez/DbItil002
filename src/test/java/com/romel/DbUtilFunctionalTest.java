@@ -18,7 +18,6 @@ import java.util.Properties;
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.Order;
 
 public class DbUtilFunctionalTest {
 	
@@ -37,7 +36,6 @@ public class DbUtilFunctionalTest {
 	}
 	
 	@Test
-	@Order(1)
 	public void testStart() {
 		String sql;
 		String[] columnType;
@@ -72,7 +70,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Result:\n");
 			displayResultSet(getResultSet("select employeeNumber, concat(firstName, \" \", lastName) as \"Name\", city from employees left join offices on employees.officeCode = offices.officeCode " + 
 			"where employeeNumber > ?", "String", "1500"));
-			System.out.println("Successfull.");
+			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
@@ -80,7 +78,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Comments: Retrieves the total number of records in the employees table.");
 			System.out.println("Result:\n");
 			displayResultSet(getResultSet("Select Count(employeeNumber) From employees"));
-			System.out.println("Successfull.");
+			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			sql = "Insert Into employees (employeeNumber, lastName, firstName, extension, email, officeCode, reportsTo, jobTitle) " +
@@ -93,7 +91,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Result:\n");
 			//updateData(sql, columnType, columnValue);
 			System.out.println("Inserted -> " + updateData(sql, columnType, columnValue) + " record/s.");
-			System.out.println("Successfull.");
+			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
@@ -101,7 +99,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Comments: Retrieves the total number of records in the employees table.");
 			System.out.println("Result:\n");
 			displayResultSet(getResultSet("Select Count(employeeNumber) From employees"));
-			System.out.println("Successfull.");
+			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql) {}");
@@ -117,7 +115,7 @@ public class DbUtilFunctionalTest {
 			System.out.println("Comments: Closes the connection to the MySQL local database.");
 			System.out.println("Result:\n");
 			dbUtil.close();
-			System.out.println("Successfull.");
+			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("End of test.");
