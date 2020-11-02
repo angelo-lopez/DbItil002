@@ -36,7 +36,7 @@ public class DbUtilFunctionalTest {
 	}
 	
 	@Test
-	public void testStart() {
+	public void testMain() {
 		String sql;
 		String[] columnType;
 		String[] columnValue;
@@ -53,6 +53,22 @@ public class DbUtilFunctionalTest {
 			System.out.println("Result:\n");
 			dbUtil.connect();
 			System.out.println("Successfull.");
+			
+			System.out.println("--------------------------------------------------------------------------------------------");
+			System.out.println("Method under test -> public ResultSet getData(String sql, String dataType, String argument");
+			System.out.println("Query String: Select * From employees Where employeeNumber = 1803");
+			System.out.println("Comments: Checks if the database already has a record for employee number 1803.");
+			System.out.println("Result:\n");
+			
+			if(getResultSet("Select * From employees Where employeeNumber = ?", "int", "1803").next()) {
+				System.out.println("Test Failed.");
+				fail("The database already contains a record for test data employee number 1803.");
+			}
+			else {
+				System.out.println("Test data does not exists in the database.");
+			}
+			
+			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
 			System.out.println("Method under test -> public ResultSet getData(String sql)");
@@ -107,6 +123,25 @@ public class DbUtilFunctionalTest {
 			System.out.println("Comments: Retrieves the newly inserted record for employee number 1803.");
 			System.out.println("Result:\n");
 			displayResultSet(getResultSet("Select * From employees Where employeeNumber = ?", "int", "1803"));
+			System.out.println("Test Successfull.");
+			
+			System.out.println("--------------------------------------------------------------------------------------------");
+			sql = "Delete From employees Where employeeNumber = ?";
+			columnType = new String[] {"int"};
+			columnValue = new String[] {"1803"};
+			System.out.println("Method under test -> updateData(String sql, String[] dataType, String[] argument)");
+			System.out.println("Query String: Delete From employees Where employeeNumber = 1803");
+			System.out.println("Comments: Deletes the newly inserted record for employee number 1803.");
+			System.out.println("Result:\n");
+			System.out.println("Deleted -> " + updateData(sql, columnType, columnValue) + " record/s.");
+			System.out.println("Test Successfull.");
+			
+			System.out.println("--------------------------------------------------------------------------------------------");
+			System.out.println("Method under test -> public ResultSet getData(String sql)");
+			System.out.println("Query String: Select Count(employeeNumber) From employees");
+			System.out.println("Comments: Retrieves the total number of records in the employees table.");
+			System.out.println("Result:\n");
+			displayResultSet(getResultSet("Select Count(employeeNumber) From employees"));
 			System.out.println("Test Successfull.");
 			
 			System.out.println("--------------------------------------------------------------------------------------------");
