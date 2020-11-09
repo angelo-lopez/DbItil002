@@ -177,8 +177,14 @@ public class DbUtilFunctionalTest {
 		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
 		
 		if(resultSet != null & resultSet.isBeforeFirst()) {
-			for(int i = 1; i <= resultSetMetaData.getColumnCount(); i ++) {
-				System.out.printf("%-35s", resultSetMetaData.getColumnLabel(i));
+			//for(int i = 1; i <= resultSetMetaData.getColumnCount(); i ++) {
+			//	System.out.printf("%-35s", resultSetMetaData.getColumnLabel(i));
+			//}
+			
+			String[] columnNames = dbUtil.getColumnNames(resultSet);
+			
+			for(int i =0; i < columnNames.length; i ++) {
+				System.out.printf("%-35s", columnNames[i]);
 			}
 			
 			System.out.print("\n");
