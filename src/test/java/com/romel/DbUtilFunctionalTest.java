@@ -174,10 +174,10 @@ public class DbUtilFunctionalTest {
 	}
 	
 	public void displayResultSet(ResultSet resultSet) throws SQLException, Exception {
-		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+		String[] columnNames;
 		
 		if(resultSet != null & resultSet.isBeforeFirst()) {
-			String[] columnNames = dbUtil.getColumnNames(resultSet);
+			columnNames = dbUtil.getColumnNames(resultSet);
 			
 			for(int i =0; i < columnNames.length; i ++) {
 				System.out.printf("%-35s", columnNames[i]);
@@ -186,8 +186,8 @@ public class DbUtilFunctionalTest {
 			System.out.print("\n");
 			
 			while(resultSet.next()) {
-				for(int i = 1; i <= resultSetMetaData.getColumnCount(); i ++) {
-					System.out.printf("%-35s", resultSet.getString(i));
+				for(int i = 0; i < columnNames.length; i ++) {
+					System.out.printf("%-35s", resultSet.getString(i + 1));
 				}
 				System.out.print("\n");
 			}
