@@ -4,6 +4,7 @@ import java.sql.DriverManager;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 public class DbUtil {
@@ -140,6 +141,17 @@ public class DbUtil {
 		}
 		
 		return preparedStatement.executeUpdate();
+	}
+	
+	public String[] getColumnNames(ResultSet resultSet) throws SQLException {
+		ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
+		String[] columnNames = new String[resultSetMetaData.getColumnCount()];
+		
+		for(int i = 1; i <= resultSetMetaData.getColumnCount(); i ++) {
+			columnNames[i - 1] = resultSetMetaData.getColumnName(i);
+		}
+		
+		return columnNames;
 	}
 	
 }
