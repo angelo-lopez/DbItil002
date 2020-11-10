@@ -4,7 +4,6 @@ import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 
 import java.io.InputStream;
